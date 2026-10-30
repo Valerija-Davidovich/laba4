@@ -2,7 +2,6 @@
    СИСТЕМА (Палитра + Единая сетка отступов)
    ========================================= */
 :root {
-    /* Палитра Color Hunt */
     --bg-main: #FCF8F8;       
     --bg-card: #FFFFFF;       
     --accent: #F5AFAF;        
@@ -12,16 +11,6 @@
     --text-dark: #4A2B35;     
     --text-muted: #8E6B77;    
     
-    /* 
-       ЕДИНАЯ СЕТКА ОТСТУПОВ (шаг 8px)
-       s-1 = 8px   (минимальный)
-       s-2 = 16px  (мелкий)
-       s-3 = 24px  (средний)
-       s-4 = 32px  (крупный)
-       s-6 = 48px  (между блоками)
-       s-8 = 64px  (между секциями)
-       s-12 = 96px (огромный)
-    */
     --s-1: 8px;
     --s-2: 16px;
     --s-3: 24px;
@@ -47,7 +36,6 @@ body {
     font-size: 16px;
 }
 
-/* Контейнер: боковые отступы строго по 24px */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -55,16 +43,16 @@ body {
     padding: 0 var(--s-3); 
 }
 
-/* --- ШРИФТЫ --- */
+/* --- БАЗОВЫЕ ШРИФТЫ --- */
 h1 { font-size: 48px; line-height: 1.2; font-weight: 800; letter-spacing: -1px; }
-h2 { font-size: 18px; font-weight: 500; color: var(--text-muted); line-height: 1.4; }
-p { font-size: 16px; color: var(--text-muted); }
+h2 { font-size: 16px; font-weight: 500; color: var(--text-muted); line-height: 1.4; }
+p { font-size: 16px; color: var(--text-muted); margin: 0; }
 
 /* =========================================
    ШАПКА
    ========================================= */
 .header {
-    padding: var(--s-3) 0; /* 24px сверху и снизу */
+    padding: var(--s-3) 0;
     position: absolute;
     width: 100%;
     top: 0;
@@ -81,7 +69,7 @@ p { font-size: 16px; color: var(--text-muted); }
 
 .nav {
     display: flex;
-    gap: var(--s-3); /* Расстояние между ссылками 24px */
+    gap: var(--s-3);
 }
 
 .nav a {
@@ -94,19 +82,19 @@ p { font-size: 16px; color: var(--text-muted); }
 .nav a:hover { color: var(--text-muted); }
 
 /* =========================================
-   СЕКЦИЯ HERO
+   СЕКЦИЯ HERO (ГЛАВНЫЙ ЭКРАН)
    ========================================= */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: var(--s-12) 0 var(--s-8) 0; /* Сверху 96px (из-за шапки), снизу 64px */
+    padding: var(--s-12) 0 var(--s-8) 0;
 }
 
 .hero-wrapper {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: var(--s-8); /* Расстояние между фото и текстом 64px */
+    gap: var(--s-8);
     align-items: center;
 }
 
@@ -123,31 +111,41 @@ p { font-size: 16px; color: var(--text-muted); }
     border: 2px solid var(--bg-card);
 }
 
+/* ТУТ ЖИВУТ СТИЛИ ДЛЯ ТЕКСТА И КНОПОК */
 .hero-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;             /* <--- ВОТ ЭТО задает базовый отступ между ВСЕМИ блоками (24px) */
+    gap: 1.5rem; /* 24px между всеми блоками */
 }
 
 .badge {
     background-color: var(--badge-bg);
     color: var(--text-dark);
-    padding: var(--s-1) var(--s-2); /* Внутри плашки 8px сверху/снизу и 16px по бокам */
+    padding: var(--s-1) var(--s-2);
     border-radius: 50px;
     font-size: 16px;       
     font-weight: 600;      
 }
 
+/* Тот самый класс, который делает оба текста одинаковыми */
+.hero-subtitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0;
+}
+
 .hero-actions {
     display: flex;
-    gap: 1rem;               /* Это отступ МЕЖДУ кнопками (Связаться и Мои навыки) */
-    margin-top: 1rem;        /* <--- ВОТ ОН, ВНЕШНИЙ ОТСТУП СВЕРХУ (от текста до кнопок) */
+    gap: 1rem;
+    margin-top: 1rem; /* 16px воздуха до кнопок */
 }
 
 /* --- КНОПКИ --- */
 .btn, .btn-outline {
-    padding: var(--s-2) var(--s-4); /* 16px сверху/снизу, 32px по бокам */
+    padding: var(--s-2) var(--s-4);
     font-size: 16px;       
     font-weight: 600;      
     text-decoration: none;
@@ -168,31 +166,31 @@ p { font-size: 16px; color: var(--text-muted); }
    СЕКЦИЯ НАВЫКИ
    ========================================= */
 .skills-section {
-    padding: var(--s-8) 0; /* 64px сверху и снизу */
+    padding: var(--s-8) 0;
 }
 
 .section-title {
     font-size: 32px;
     color: var(--text-dark);
     font-weight: 700;
-    margin-bottom: var(--s-6); /* Отступ от заголовка до карточек 48px */
+    margin-bottom: var(--s-6);
     text-align: center;
 }
 
 .grid-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--s-4); /* Расстояние между карточками 32px */
+    gap: var(--s-4);
 }
 
 .card {
     background-color: var(--bg-card);
-    padding: var(--s-4); /* Внутренний отступ карточки 32px со всех сторон */
+    padding: var(--s-4);
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(74, 43, 53, 0.04);
     display: flex;
     flex-direction: column;
-    gap: var(--s-2); /* Отступ между иконкой, заголовком и текстом 16px */
+    gap: var(--s-2);
     border: 1px solid var(--bg-main);
 }
 
@@ -205,7 +203,7 @@ p { font-size: 16px; color: var(--text-muted); }
     align-items: center;
     justify-content: center;
     color: var(--accent);
-    margin-bottom: var(--s-1); /* Дополнительный отступ снизу от иконки 8px */
+    margin-bottom: var(--s-1);
 }
 
 .card-icon svg { width: 28px; height: 28px; }
@@ -221,26 +219,26 @@ p { font-size: 16px; color: var(--text-muted); }
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--s-8); /* Расстояние между текстом и формой 64px */
+    gap: var(--s-8);
     align-items: center;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: var(--s-3); /* Отступ между заголовком, текстом и списком 24px */
+    gap: var(--s-3);
 }
 
 .contact-info .section-title {
     text-align: left;
-    margin-bottom: 0; /* Убрали, так как работает gap родителя */
+    margin-bottom: 0;
 }
 
 .contact-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--s-2); /* Отступ между пунктами списка 16px */
+    gap: var(--s-2);
     font-size: 16px;
     color: var(--text-dark);
     font-weight: 500;
@@ -248,7 +246,7 @@ p { font-size: 16px; color: var(--text-muted); }
 
 .contact-form-box {
     background-color: var(--bg-card);
-    padding: var(--s-4); /* Внутренний отступ 32px */
+    padding: var(--s-4);
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(74, 43, 53, 0.04);
     border: 1px solid var(--bg-main);
@@ -257,13 +255,13 @@ p { font-size: 16px; color: var(--text-muted); }
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--s-3); /* Расстояние между инпутами и кнопкой 24px */
+    gap: var(--s-3);
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: var(--s-2); /* Внутренний отступ полей 16px */
+    padding: var(--s-2);
     border: 2px solid var(--bg-main);
     border-radius: 8px;
     font-family: inherit;
@@ -284,7 +282,7 @@ p { font-size: 16px; color: var(--text-muted); }
    ФУТЕР
    ========================================= */
 .footer {
-    padding: var(--s-4) 0; /* 32px сверху и снизу */
+    padding: var(--s-4) 0;
     text-align: center;
     color: var(--text-muted);
     font-size: 14px;
@@ -292,7 +290,7 @@ p { font-size: 16px; color: var(--text-muted); }
 }
 
 /* =========================================
-   АДАПТИВНОСТЬ
+   АДАПТИВНОСТЬ (Только для мобилок!)
    ========================================= */
 @media (max-width: 900px) {
     .hero-wrapper,
@@ -301,40 +299,19 @@ p { font-size: 16px; color: var(--text-muted); }
         gap: var(--s-6);
     }
 
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem; /* 1.5rem = 24px. Единый отступ между ВСЕМИ блоками */
-}
+    .hero-content {
+        align-items: center; /* Центрируем на мобилке */
+        text-align: center;
+    }
 
-/* Единый стиль для обоих текстов (как ты просила) */
-.hero-subtitle {
-    font-size: 24px;         /* Тот же размер, что был у H2 */
-    font-weight: 500;        /* Полужирный */
-    color: var(--text-muted);/* Пыльно-розовый */
-    line-height: 1.4;
-    margin: 0;               /* Обнуляем, чтобы не ломать gap */
-}
-
-/* Кнопки с отступом сверху (используем rem из методички) */
-.hero-actions {
-    display: flex;
-    gap: 1rem;               /* 1rem = 16px между кнопками */
-    margin-top: 1rem;        /* 1rem = 16px дополнительного воздуха СВЕРХУ от кнопок */
-    /* Если хочешь, чтобы отступ был больше (например, 32px), напиши 2rem */
-}
-
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
 
     .btn, .btn-outline { width: 100%; }
     h1 { font-size: 36px; }
     .avatar { max-width: 300px; height: 300px; }
     .header { position: relative; padding: var(--s-2) 0; }
     .hero { padding: var(--s-6) 0; }
-}
-p {
-    font-size: 16px;
-    color: var(--text-muted);
-    margin: 0; /* ВАЖНО: убираем любой нижний отступ */
-    padding: 0;
 }
