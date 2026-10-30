@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Валерия Давидович — Веб-дизайнер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="#" class="logo">V. Davidovich</a>
+            <nav class="nav">
+                <a href="#skills">Компетенции</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЯ 1: HERO (Главный экран) -->
+    <section class="hero" id="hero">
+        <div class="container hero-wrapper">
+            
+            <!-- Левая часть: Фото -->
+            <div class="hero-image">
+                <img src="avatar.jpg" alt="Валерия Давидович" class="avatar">
+            </div>
+
+            <!-- Правая часть: Текст -->
+            <div class="hero-content">
+                <span class="badge">✨ Открыта к стажировкам</span>
+                <h1>Привет! Я Валерия — веб-дизайнер</h1>
+                <h2>Проектирую современные интерфейсы и создаю эстетичный цифровой опыт</h2>
+                <p>
+                    Студентка Академии управления при Президенте Республики Беларусь. 
+                    Помогаю бизнесу и экспертам выглядеть в сети дорого, стильно 
+                    и профессионально. От идеи до готового кода.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn">Связаться со мной</a>
+                    <a href="#skills" class="btn-outline">Мои навыки</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 2: НАВЫКИ (С SVG-иконками) -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Мои компетенции</h2>
+            <div class="grid-cards">
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>UI/UX Дизайн</h3>
+                    <p>Создаю удобные интерфейсы в Figma. Проектирую логику взаимодействия пользователя с сайтом.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Веб-разработка</h3>
+                    <p>Верстаю сайты на чистом HTML5 и CSS3. Адаптирую под мобильные устройства и планшеты.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Управление контентом</h3>
+                    <p>Профессионально работаю с информационными ресурсами, структурирую данные и управляю контентом.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 3: КОНТАКТЫ -->
+    <section class="contact-section" id="contact">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h2 class="section-title">Давайте создадим что-то крутое</h2>
+                <p>Напишите мне, если вам нужен сайт-визитка, лендинг или просто консультация по дизайну.</p>
+                <ul class="contact-list">
+                    <li>📍 Минск, Беларусь</li>
+                    <li>✉️ leradavidovich1@gmail.com</li>
+                    <li>📱 +375 (29) 713-81-26</li>
+                </ul>
+            </div>
+            <div class="contact-form-box">
+                <form action="#" method="POST" class="contact-form">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="email" placeholder="Ваш Email" required>
+                    <textarea placeholder="Сообщение" rows="4" required></textarea>
+                    <button type="submit" class="btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Валерия Давидович. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
