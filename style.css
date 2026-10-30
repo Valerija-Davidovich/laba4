@@ -14,6 +14,13 @@
     
     /* 
        ЕДИНАЯ СЕТКА ОТСТУПОВ (шаг 8px)
+       s-1 = 8px   (минимальный)
+       s-2 = 16px  (мелкий)
+       s-3 = 24px  (средний)
+       s-4 = 32px  (крупный)
+       s-6 = 48px  (между блоками)
+       s-8 = 64px  (между секциями)
+       s-12 = 96px (огромный)
     */
     --s-1: 8px;
     --s-2: 16px;
@@ -40,7 +47,7 @@ body {
     font-size: 16px;
 }
 
-/* Контейнер */
+/* Контейнер: боковые отступы строго по 24px */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -49,9 +56,9 @@ body {
 }
 
 /* --- ШРИФТЫ --- */
-h1 { font-size: 48px; line-height: 1.2; font-weight: 800; letter-spacing: -1px; margin: 0; }
-h2 { font-size: 24px; font-weight: 500; color: var(--text-muted); line-height: 1.4; margin: 0; }
-p { font-size: 16px; color: var(--text-muted); margin: 0; }
+h1 { font-size: 48px; line-height: 1.2; font-weight: 800; letter-spacing: -1px; }
+h2 { font-size: 24px; font-weight: 500; color: var(--text-muted); line-height: 1.4; }
+p { font-size: 16px; color: var(--text-muted); }
 
 /* =========================================
    ШАПКА
@@ -70,16 +77,11 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     align-items: center;
 }
 
-.logo { 
-    font-weight: 800; 
-    font-size: 20px; 
-    color: var(--text-dark); 
-    text-decoration: none; 
-}
+.logo { font-weight: 800; font-size: 20px; color: var(--text-dark); text-decoration: none; }
 
 .nav {
     display: flex;
-    gap: var(--s-3); /* 24px между ссылками */
+    gap: var(--s-3); /* Расстояние между ссылками 24px */
 }
 
 .nav a {
@@ -98,20 +100,17 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: var(--s-12) 0 var(--s-8) 0; /* 96px сверху, 64px снизу */
+    padding: var(--s-12) 0 var(--s-8) 0; /* Сверху 96px (из-за шапки), снизу 64px */
 }
 
 .hero-wrapper {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: var(--s-8); /* 64px между колонками */
+    gap: var(--s-8); /* Расстояние между фото и текстом 64px */
     align-items: center;
 }
 
-.hero-image { 
-    display: flex; 
-    justify-content: center; 
-}
+.hero-image { display: flex; justify-content: center; }
 
 .avatar {
     width: 100%;
@@ -127,25 +126,25 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
 .hero-content {
     display: flex;
     flex-direction: column;
-    gap: var(--s-3); /* СТРОГО 24px между ВСЕМИ элементами */
+    align-items: flex-start;
+    gap: var(--s-3); /* РОВНО 24px между ВСЕМИ элементами */
 }
 
 .badge {
     background-color: var(--badge-bg);
     color: var(--text-dark);
-    padding: var(--s-1) var(--s-2); /* 8px сверху/снизу, 16px по бокам */
+    padding: var(--s-1) var(--s-2); /* Внутри плашки 8px сверху/снизу и 16px по бокам */
     border-radius: 50px;
     font-size: 16px;       
-    font-weight: 600;
-    display: inline-block;
-    width: fit-content;
+    font-weight: 600;      
 }
 
 .hero-actions {
     display: flex;
-    gap: var(--s-2); /* 16px между кнопками */
-    margin-top: 0; /* Убираем любые смещения */
-     margin-bottom: var(--s-4);
+    gap: var(--s-2);
+    /* Магия: подтягиваем кнопки вверх на 8px, 
+       чтобы скомпенсировать невидимый отступ от line-height текста */
+    margin-top: calc(var(--s-1) * -1); 
 }
 
 /* --- КНОПКИ --- */
@@ -162,25 +161,10 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     border: 2px solid transparent;
 }
 
-.btn { 
-    background-color: var(--accent); 
-    color: var(--text-dark); 
-    border-color: var(--accent); 
-}
-.btn:hover { 
-    background-color: var(--accent-hover); 
-    border-color: var(--accent-hover); 
-}
-
-.btn-outline { 
-    background-color: transparent; 
-    color: var(--text-dark); 
-    border-color: var(--accent); 
-}
-.btn-outline:hover { 
-    background-color: var(--badge-bg); 
-    border-color: var(--accent-hover); 
-}
+.btn { background-color: var(--accent); color: var(--text-dark); border-color: var(--accent); }
+.btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
+.btn-outline { background-color: transparent; color: var(--text-dark); border-color: var(--accent); }
+.btn-outline:hover { background-color: var(--badge-bg); border-color: var(--accent-hover); }
 
 /* =========================================
    СЕКЦИЯ НАВЫКИ
@@ -193,24 +177,24 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     font-size: 32px;
     color: var(--text-dark);
     font-weight: 700;
-    margin-bottom: var(--s-6); /* 48px до карточек */
+    margin-bottom: var(--s-6); /* Отступ от заголовка до карточек 48px */
     text-align: center;
 }
 
 .grid-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--s-4); /* 32px между карточками */
+    gap: var(--s-4); /* Расстояние между карточками 32px */
 }
 
 .card {
     background-color: var(--bg-card);
-    padding: var(--s-4); /* 32px внутри */
+    padding: var(--s-4); /* Внутренний отступ карточки 32px со всех сторон */
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(74, 43, 53, 0.04);
     display: flex;
     flex-direction: column;
-    gap: var(--s-2); /* 16px между элементами внутри карточки */
+    gap: var(--s-2); /* Отступ между иконкой, заголовком и текстом 16px */
     border: 1px solid var(--bg-main);
 }
 
@@ -223,60 +207,50 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     align-items: center;
     justify-content: center;
     color: var(--accent);
+    margin-bottom: var(--s-1); /* Дополнительный отступ снизу от иконки 8px */
 }
 
-.card-icon svg { 
-    width: 28px; 
-    height: 28px; 
-}
-
-.card h3 { 
-    font-size: 20px; 
-    font-weight: 700; 
-    color: var(--text-dark);
-    margin: 0;
-}
+.card-icon svg { width: 28px; height: 28px; }
+.card h3 { font-size: 20px; font-weight: 700; color: var(--text-dark); }
 
 /* =========================================
    СЕКЦИЯ КОНТАКТЫ
    ========================================= */
 .contact-section {
-    padding: var(--s-8) 0; /* 64px сверху и снизу */
+    padding: var(--s-8) 0;
 }
 
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--s-8); /* 64px между колонками */
+    gap: var(--s-8); /* Расстояние между текстом и формой 64px */
     align-items: center;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: var(--s-3); /* 24px между элементами */
+    gap: var(--s-3); /* Отступ между заголовком, текстом и списком 24px */
 }
 
 .contact-info .section-title {
     text-align: left;
-    margin-bottom: 0; /* Убираем, так как работает gap */
+    margin-bottom: 0; /* Убрали, так как работает gap родителя */
 }
 
 .contact-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--s-2); /* 16px между пунктами */
+    gap: var(--s-2); /* Отступ между пунктами списка 16px */
     font-size: 16px;
     color: var(--text-dark);
     font-weight: 500;
-    margin: 0;
-    padding: 0;
 }
 
 .contact-form-box {
     background-color: var(--bg-card);
-    padding: var(--s-4); /* 32px внутри */
+    padding: var(--s-4); /* Внутренний отступ 32px */
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(74, 43, 53, 0.04);
     border: 1px solid var(--bg-main);
@@ -285,13 +259,13 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--s-3); /* 24px между полями */
+    gap: var(--s-3); /* Расстояние между инпутами и кнопкой 24px */
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: var(--s-2); /* 16px внутри полей */
+    padding: var(--s-2); /* Внутренний отступ полей 16px */
     border: 2px solid var(--bg-main);
     border-radius: 8px;
     font-family: inherit;
@@ -326,41 +300,31 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     .hero-wrapper,
     .contact-wrapper {
         grid-template-columns: 1fr;
-        gap: var(--s-6); /* 48px на мобильных */
+        gap: var(--s-6);
     }
 
-    .hero-content {
-        gap: var(--s-3); /* 24px - сохраняем систему */
-    }
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-3); /* Строго 24px между ВСЕМИ блоками */
+}
 
-    .hero-actions {
-        gap: var(--s-2); /* 16px между кнопками */
-        margin-top: 0;
-    }
+.hero-actions {
+    display: flex;
+    gap: var(--s-2); /* 16px между кнопками */
+    margin-top: 0; /* ЖЕСТКО обнуляем отступ сверху, чтобы не ломал gap */
+}
 
-    .btn, .btn-outline { 
-        width: 100%; 
-    }
-    
-    h1 { 
-        font-size: 36px; 
-    }
-    
-    .avatar { 
-        max-width: 300px; 
-        height: 300px; 
-    }
-    
-    .header { 
-        position: relative; 
-        padding: var(--s-2) 0; 
-    }
-    
-    .hero { 
-        padding: var(--s-6) 0; 
-    }
-    
-    .grid-cards {
-        grid-template-columns: 1fr;
-    }
+    .btn, .btn-outline { width: 100%; }
+    h1 { font-size: 36px; }
+    .avatar { max-width: 300px; height: 300px; }
+    .header { position: relative; padding: var(--s-2) 0; }
+    .hero { padding: var(--s-6) 0; }
+}
+p {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin: 0; /* ВАЖНО: убираем любой нижний отступ */
+    padding: 0;
 }
