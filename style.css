@@ -11,6 +11,7 @@
     --text-dark: #4A2B35;     
     --text-muted: #8E6B77;    
     
+    /* Единая сетка отступов (шаг 8px) */
     --s-1: 8px;
     --s-2: 16px;
     --s-3: 24px;
@@ -45,7 +46,7 @@ body {
 
 /* --- БАЗОВЫЕ ШРИФТЫ --- */
 h1 { font-size: 48px; line-height: 1.2; font-weight: 800; letter-spacing: -1px; }
-h2 { font-size: 16px; font-weight: 500; color: var(--text-muted); line-height: 1.4; }
+h2 { font-size: 18px; font-weight: 500; color: var(--text-muted); line-height: 1.4; }
 p { font-size: 16px; color: var(--text-muted); margin: 0; }
 
 /* =========================================
@@ -111,12 +112,11 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     border: 2px solid var(--bg-card);
 }
 
-/* ТУТ ЖИВУТ СТИЛИ ДЛЯ ТЕКСТА И КНОПОК */
 .hero-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem; /* 24px между всеми блоками */
+    gap: var(--s-3);
 }
 
 .badge {
@@ -128,7 +128,6 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     font-weight: 600;      
 }
 
-/* Тот самый класс, который делает оба текста одинаковыми */
 .hero-subtitle {
     font-size: 24px;
     font-weight: 500;
@@ -139,8 +138,8 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
 
 .hero-actions {
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem; /* 16px воздуха до кнопок */
+    gap: var(--s-2);
+    margin-top: var(--s-2);
 }
 
 /* --- КНОПКИ --- */
@@ -223,10 +222,12 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     align-items: center;
 }
 
+/* Жестко прижимаем контент слева к краю */
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: var(--s-3);
+    align-items: flex-start; 
+    gap: var(--s-3); 
 }
 
 .contact-info .section-title {
@@ -244,6 +245,37 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     font-weight: 500;
 }
 
+/* --- КНОПКИ СОЦСЕТЕЙ (Встанут ровно под телефоном) --- */
+.social-links {
+    display: flex;
+    gap: var(--s-2); 
+    margin-top: var(--s-1); 
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;               
+    height: 48px;
+    background-color: var(--bg-card); 
+    color: var(--text-dark);   
+    border-radius: 12px;       
+    box-shadow: 0 4px 12px rgba(74, 43, 53, 0.05); 
+    transition: background-color 0.3s ease; 
+    border: 2px solid transparent;
+}
+
+.social-btn:hover {
+    background-color: var(--accent); 
+}
+
+.social-btn svg {
+    width: 24px;  
+    height: 24px;
+}
+
+/* --- ФОРМА --- */
 .contact-form-box {
     background-color: var(--bg-card);
     padding: var(--s-4);
@@ -290,7 +322,7 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
 }
 
 /* =========================================
-   АДАПТИВНОСТЬ (Только для мобилок!)
+   АДАПТИВНОСТЬ (Мобилки)
    ========================================= */
 @media (max-width: 900px) {
     .hero-wrapper,
@@ -300,7 +332,12 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     }
 
     .hero-content {
-        align-items: center; /* Центрируем на мобилке */
+        align-items: center; 
+        text-align: center;
+    }
+
+    .contact-info {
+        align-items: center; /* На мобилке контакты по центру */
         text-align: center;
     }
 
@@ -314,4 +351,20 @@ p { font-size: 16px; color: var(--text-muted); margin: 0; }
     .avatar { max-width: 300px; height: 300px; }
     .header { position: relative; padding: var(--s-2) 0; }
     .hero { padding: var(--s-6) 0; }
+}
+.skills-section {
+    padding: var(--s-8) 0;
+    background-color: var(--badge-bg); /* Нежно-розовый оттенок (#FBEFEF) */
+}
+.contact-section {
+    padding: var(--s-8) 0;
+    background-color: var(--bg-card); /* Чисто белый (#FFFFFF), чтобы форма выделялась */
+}
+.footer {
+    padding: var(--s-4) 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-main); /* Возвращаем базовый светло-розовый (#FCF8F8) */
 }
